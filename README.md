@@ -9,7 +9,7 @@ of freedom. The model neglects the damping of the system.
 
 The contained stiffness and inertia values refer to the original Honda crankshaft and are estimated 
 using an accurate 3D-scan CAD model and FEA simulation. The script calculates the eigenfrequencies and plots an so-called
-'image shaft' ´for each eigenmode. The model was validated with an  modal analysis using FEA simulation and additional
+'image shaft' for each eigenmode. The model was validated with an  modal analysis using FEA simulation and additional
 measurements using the impuls hammer method with acceptable results. The difference to the results of the experimental modal 
 analysis and the FEA analysis was about 10% for the first eigenmode in this case. The main difficulty is the calculation of the 
 stiffness values because they have to be very precise regarding the high impact on the results. There are empirical calculation 
