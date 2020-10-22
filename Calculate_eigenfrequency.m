@@ -1,5 +1,5 @@
 % Numer of evaluated eigenfrequencies
-Nf = 3;
+Nf = 2;
 
 % Moment of inertia [kg*m^2]
 J1=0.0000199; 
@@ -75,7 +75,7 @@ for i = 1:Nf
     ylabel('Rel. amplitude');
     xticks(1:6)
     legend (['Mode: ' num2str(i) ': ' num2str(round((w0(i,1)/(2*pi)),0)) ' Hz'])
-
+    set(gcf,'color','w');
     hold on
 
 end

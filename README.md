@@ -3,14 +3,17 @@
 'Calculate_eigenfrequency.m' is a Matlab script for analytical modal analysis of rotary transducers. 
 It was used to calculate the torsional eigenfrequencies of a modified Honda CBR600 RR crankshaft for 
 a Formula Student car. The model for crankshaft consits of a six-mass-system and only has rotational degrees 
-of freedom. 
+of freedom. The model neglects the damping of the system.
 
 ![Alt text](./analogous_model.png?raw=true "Title")
 
 The contained stiffness and inertia values refer to the original Honda part and are estimated 
 using an accurate 3D-scan CAD model and FEA simulation. The script calculates the eigenfrequencies and plots an
-'image wave' ´for each eigenmode. The model is validated with an additional modal analysis using FEA simulation and 
-measurements using impuls hammer method with good results. 
+'image shaft' ´for each eigenmode. The model is validated with an additional modal analysis using FEA simulation and 
+measurements using impuls hammer method with acceptable results. The difference to the results of the experimental modal 
+analysis and the FEA analysis is about 10% for the first eigenmode in this case. The main difficulty is the calculation of the 
+stiffness values because they have to be very precise regarding the high impact on the results. There are alternatives to the 
+calculation with FEA analysis. For more information refer to the methods of Carter and Tuplin in [Knütscher2006](https://books.google.de/books?id=UANwAAAACAAJ&dq=vogel+k%C3%BCntscher+kraftfahrzeugmotoren+2006&hl=de&sa=X&ved=2ahUKEwjG1L3y-MfsAhWjoXEKHXv7Ab4Q6AEwAHoECAAQAg). 
 
 Note that this analysis only handles the torsional eigenfrequencies and no bending eigenmodes are calculated! 
 
@@ -44,7 +47,11 @@ The six-mass-system is evaluated by solving the equation of motion with the poly
 [x, e, s] = polyeig(C, D, M);
 ```
 
-The calculation of the relative amplitudes refers to [Knütscher2006](https://books.google.de/books?id=UANwAAAACAAJ&dq=vogel+k%C3%BCntscher+kraftfahrzeugmotoren+2006&hl=de&sa=X&ved=2ahUKEwjG1L3y-MfsAhWjoXEKHXv7Ab4Q6AEwAHoECAAQAg).
+The calculation of the relative amplitudes and the plotted 'image shaft' refers to [Knütscher2006](https://books.google.de/books?id=UANwAAAACAAJ&dq=vogel+k%C3%BCntscher+kraftfahrzeugmotoren+2006&hl=de&sa=X&ved=2ahUKEwjG1L3y-MfsAhWjoXEKHXv7Ab4Q6AEwAHoECAAQAg).
+It shows the eigenmode-specific relative amplitude for each mass of the system. In the following you can see the first two 
+torsional eigenmodes of the Honda Crankshaft and the corresponding frequencies. 
+![Alt text](./image_shaft.png?raw=true "Title")
+
 
 ## License
 MIT License
