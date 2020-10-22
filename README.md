@@ -9,8 +9,8 @@ of freedom.
 
 The contained stiffness and inertia values refer to the original Honda part and are estimated 
 using an accurate 3D-scan CAD model and FEA simulation. The script calculates the eigenfrequencies and plots an
-'image wave' ´for each eigenmode. For further information on this topic, please refer to [Knütscher2006](https://books.google.de/books?id=UANwAAAACAAJ&dq=vogel+k%C3%BCntscher+kraftfahrzeugmotoren+2006&hl=de&sa=X&ved=2ahUKEwjG1L3y-MfsAhWjoXEKHXv7Ab4Q6AEwAHoECAAQAg).
-The model is validated with an additional modal analysis using FEA simulation and measurements using impuls hammer method. 
+'image wave' ´for each eigenmode. The model is validated with an additional modal analysis using FEA simulation and 
+measurements using impuls hammer method with good results. 
 
 Note that this analysis only handles the torsional eigenfrequencies and no bending eigenmodes are calculated! 
 
@@ -18,7 +18,8 @@ Note that this analysis only handles the torsional eigenfrequencies and no bendi
 ## Usage
 
 Within the header of the script the necessary parameters have to be defined. Nf defines the number of plottet
-eigenmodes. Ji and ci define the inertia and stiffness values of the crankshaft.
+eigenmodes. Ji and ci define the inertia and stiffness values of the crankshaft. 
+
 ```Matlab
 Nf = 3;
 
@@ -37,9 +38,13 @@ c3_deg = 2430;
 c4_deg = 2636;
 c5_deg = 2562;
 ```
+To deal with systems containing more or less masses, the inertia and stiffness matricies can simply be extended or simplified.
+The six-mass-system is evaluated by solving the equation of motion with the polyeig function. 
+```Matlab
+[x, e, s] = polyeig(C, D, M);
+```
 
-The system is evaluated by solving the equation of motion:
-<img src="https://render.githubusercontent.com/render/math?math=\underline{M} \vec{\ddot{\phi}} + \underline{K} \vec{\phi} + \underline{K} \vec{\dot{\phi}} = \vec{0}">
+The calculation of the relative amplitudes refers to [Knütscher2006](https://books.google.de/books?id=UANwAAAACAAJ&dq=vogel+k%C3%BCntscher+kraftfahrzeugmotoren+2006&hl=de&sa=X&ved=2ahUKEwjG1L3y-MfsAhWjoXEKHXv7Ab4Q6AEwAHoECAAQAg).
 
 ## License
 MIT License
