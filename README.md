@@ -39,7 +39,7 @@ c5_deg = 2562;
 ```
 
 The system is evaluated by solving the equation of motion:
-<img src="https://render.githubusercontent.com/render/math?math= \underline{M} \vec{\ddot{\phi}} \+ \underline{K} \vec{\phi} \+ \underline{K} \vec{\dot{\phi}} = \vec{0}">
+<img src="https://render.githubusercontent.com/render/math?math=\underline{M} \vec{\ddot{\phi}} + \underline{K} \vec{\phi} + \underline{K} \vec{\dot{\phi}} = \vec{0}">
 
 ## License
 MIT License
