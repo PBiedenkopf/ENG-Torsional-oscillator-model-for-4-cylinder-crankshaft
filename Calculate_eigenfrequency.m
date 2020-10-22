@@ -1,5 +1,8 @@
-% Numer of evaluated eigenfrequencies
-Nf = 2;
+
+%% Parameter definition
+Nf = 2; % Numer of evaluated eigenfrequencies
+OrdPlt = 10; % Highest order for visualization
+OrdStp = 0.5; % Order steps in diagram
 
 % Moment of inertia [kg*m^2]
 J1=0.0000199; 
@@ -23,6 +26,7 @@ c3=c3_deg/(pi/180);
 c4=c4_deg/(pi/180);
 c5=c5_deg/(pi/180);
 
+%% Build six-mass-system
 % Stiffnes matrix
 C = [ c1	-c1     0       0       0       0;
       -c1   (c1+c2)	-c2     0       0       0;
@@ -47,16 +51,16 @@ D = [ 0	    0       0       0       0       0;
       0     0       0       0       0	    0;
       0     0       0       0       0       0];
 
+%% Solve eigenvalue problem
 %e = Eigenvalues, x = Eigenvectors, s = Condition numbers
 [x, e, s] = polyeig(C, D, M);
 
-% Print eigenfrequencies
 w0 = imag(e);
 w0 = sort(w0(w0>0));
 f0 = w0/(2*pi) % Convert to frequency [Hz]
 
+%% Plot relative amplitudes
 for i = 1:Nf
-    
     % Calculation of the relative amplitude
     a1=1;
     a2=a1-((a1*J1)/c1)*(w0(i,1))^2;
@@ -78,6 +82,42 @@ for i = 1:Nf
     set(gcf,'color','w');
     hold on
 
+end
+
+
+%% Print order diagram
+n = [0:15:15000]; % Define RPM range
+f = n/60;
+Modes=[];
+
+for m = 1:Nf
+    mode = f0(m) * ones(1001, 1);
+    Modes = [ Modes, mode ];
+end
+
+v=figure;
+set(v,'Color',[1 1 1]);
+
+for i = 0 : OrdStp : OrdPlt
+    Ord=f*i;
+    plot(n,Ord,'Color', [0.35 0.35 0.35],'LineWidth',1.25)
+    title('Order diagram');
+    xlabel('RPM');
+    ylabel('Frequency in Hz');
+    text(15000,Ord(1,1001),[num2str(i) '.'])
+    xticks([0:1000:15000]);
+    yticks([0:250:2500]);
+    xtickangle(45)
+    grid on
+    hold on
+end
+
+hold on
+
+for j=1:1:Nf
+    plot(n, Modes(:,j) ,'r', 'LineWidth',1.5)
+    text(1000, Modes(1,j), [num2str(Modes(1,j)) ' Hz'])
+    hold on 
 end
 
 

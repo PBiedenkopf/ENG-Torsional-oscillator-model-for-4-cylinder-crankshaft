@@ -1,4 +1,4 @@
-## Crankshaft rotary transducer
+## Crankshaft as rotary transducer
 
 'Calculate_eigenfrequency.m' is a Matlab script for analytical modal analysis of rotary transducers. 
 It was used to calculate the torsional eigenfrequencies of a modified Honda CBR600 RR crankshaft for 
@@ -19,12 +19,15 @@ Note that this analysis only handles the torsional eigenfrequencies and no bendi
 
 
 ## Usage
-
 Within the top of the script the necessary parameters have to be defined. Nf defines the number of visualized
-eigenmodes. Ji and ci define the inertia and stiffness values of the crankshaft. 
+eigenmodes, OrdPlt defines the highest order in order diagram and OrdStp is the stepsize for the order diagram. 
+The stepsize should be either 0.5 or 1. Ji and ci define the inertia and stiffness values of the crankshaft. 
 
 ```Matlab
-Nf = 3;
+%% Parameter definition
+Nf = 2; % Numer of evaluated eigenfrequencies
+OrdPlt = 10; % Highest order for visualization
+OrdStp = 0.5; % Order steps in diagram
 
 % Moment of inertia [kg*m^2]
 J1 = 0.0000199; 
@@ -52,6 +55,8 @@ It shows the eigenmode-specific relative amplitude for each mass of the system. 
 torsional eigenmodes of the Honda crankshaft with the corresponding frequencies. 
 ![Alt text](./picture/image_shaft.png?raw=true "Title")
 
+The eigenfrequencies are plotted in an order diagram to visulize potential resonances.
+![Alt text](./picture/order_diagram.png?raw=true "Title")
 
 ## License
 MIT License
