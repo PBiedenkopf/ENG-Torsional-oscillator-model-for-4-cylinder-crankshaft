@@ -9,8 +9,8 @@ of freedom.
 
 The contained stiffness and inertia values refer to the original Honda part and are estimated 
 using an accurate 3D-scan CAD model and FEA simulation. The script calculates the eigenfrequencies and plots an
-'image wave' ´for each eigenmode.
-The model is validated with an additional modal analysis using FEA and measurements using impuls hammer method. 
+'image wave' ´for each eigenmode. For further information on this topic, please refer to [Knütscher2006](https://books.google.de/books?id=UANwAAAACAAJ&dq=vogel+k%C3%BCntscher+kraftfahrzeugmotoren+2006&hl=de&sa=X&ved=2ahUKEwjG1L3y-MfsAhWjoXEKHXv7Ab4Q6AEwAHoECAAQAg).
+The model is validated with an additional modal analysis using FEA simulation and measurements using impuls hammer method. 
 
 Note that this analysis only handles the torsional eigenfrequencies and no bending eigenmodes are calculated! 
 
@@ -38,6 +38,8 @@ c4_deg = 2636;
 c5_deg = 2562;
 ```
 
+The system is evaluated by solving the equation of motion:
+$$\underline{M}*\vec{\ddot{\phi}} + \underline{K}*\vec{\phi} + \underline{K}*\vec{\dot{\phi}} = \vec{0} $$
 
 ## License
 MIT License
