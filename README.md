@@ -12,8 +12,6 @@ using an accurate 3D-scan CAD model and FEA simulation. The script calculates th
 'image wave' ´for each eigenmode.
 The model is validated with an additional modal analysis using FEA and measurements using impuls hammer method. 
 
-![Alt text](./torsional_eigenmode_1_validation.png?raw=true "Title")
-
 Note that this analysis only handles the torsional eigenfrequencies and no bending eigenmodes are calculated! 
 
 
